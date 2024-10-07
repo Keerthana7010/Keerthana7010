@@ -1,0 +1,77 @@
+#Replicating the built-in sum function
+def my_sum(iterable, start=0):
+    total = start
+    for item in iterable:
+        total += item
+    return total
+
+numbers = [1, 2, 3, 4, 5]
+print("Sum of numbers:", my_sum(numbers))  # Output should be 15
+
+print("Sum of numbers with start value 10:", my_sum(numbers, 10))  # Output should be 25
+
+#-	Create a function to replicate string attribute like, ljust(), rjust() 
+def custom_ljust(s, width, fillchar=' '):
+
+    if len(s) >= width:
+        return s
+    return s + fillchar * (width - len(s))
+
+def custom_rjust(s, width, fillchar=' '):
+    if len(s) >= width:
+        return s
+    return fillchar * (width - len(s)) + s
+example_string = "example"
+print(custom_ljust(example_string, 10, '*'))  # Output: "example***"
+print(custom_rjust(example_string, 10, '*'))  # Output: "***example"
+
+
+#Create a function to find, Palindrome, Fibo and Factorials
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+def fibonacci(n):
+    sequence = []
+    a, b = 0, 1
+    for _ in range(n):
+        sequence.append(a)
+        a, b = b, a + b
+    return sequence
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+#Create a function to generate range of numbers 
+def my_range(start, stop=None, step=1):
+    if stop is None: 
+        start, stop = 0, start
+
+    if step == 0:
+        raise ValueError("my_range() arg 3 must not be zero")
+
+    current = start
+    if step > 0:
+        while current < stop:
+            yield current
+            current += step
+    else:
+        while current > stop:
+            yield current
+            current += step
+
+# Test the custom range function
+print("Range from 0 to 10:")
+for number in my_range(10):
+    print(number, end=" ")  # Output should be 0 1 2 3 4 5 6 7 8 9
+
+print("\nRange from 5 to 15 with step 2:")
+for number in my_range(5, 15, 2):
+    print(number, end=" ")  # Output should be 5 7 9 11 13
+
+print("\nRange from 10 to 0 with step -2:")
+for number in my_range(10, 0, -2):
+    print(number, end=" ")  # Output should be 10 8 6 4 2
